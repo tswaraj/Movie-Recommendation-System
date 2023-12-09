@@ -2,14 +2,16 @@ import dash
 from dash import html, dcc, Input, Output, State
 import dash_bootstrap_components as dbc
 import pandas as pd
+import numpy as np
+import copy
 
 # Read the System 1 output CSV file
-df = pd.read_csv('system_1_output.csv')
+sys1_df = pd.read_csv('system_1_output.csv')
 
 # Create a dictionary to hold genres and their movies
 genre_dict = {}
 
-for index, row in df.iterrows():
+for index, row in sys1_df.iterrows():
     genre = row['Genres']
     movie = row['Title']
     
@@ -21,28 +23,62 @@ for index, row in df.iterrows():
 # Creating a DataFrame with genres as columns and their movies as values
 recommendations_table = pd.DataFrame(dict([(k, pd.Series(v)) for k, v in genre_dict.items()]))
 
-sample_movies = [
-    {'title': 'Toy Story (1995)', 'id': 'toy-story'},
-    {'title': 'Jumanji (1995)', 'id': 'jumanji'},
-    {'title': 'Heat (1995)', 'id': 'heat'},
-    {'title': 'GoldenEye (1995)', 'id': 'goldeneye'},
-    {'title': 'Sabrina (1995)', 'id': 'sabrina'},
-    {'title': 'Tom and Huck (1995)', 'id': 'tom-and-huck'},
-    {'title': 'Sudden Death (1995)', 'id': 'sudden-death'},
-    {'title': 'Grumpier Old Men (1995)', 'id': 'grumpier-old-men'},
-    {'title': 'Waiting to Exhale (1995)', 'id': 'waiting-to-exhale'},
-    {'title': 'Father of the Bride Part II (1995)', 'id': 'father-of-the-bride-part-ii'},
-    {'title': 'Pocahontas (1995)', 'id': 'pocahontas'},
-    {'title': 'Apollo 13 (1995)', 'id': 'apollo-13'},
-    {'title': 'Casper (1995)', 'id': 'casper'},
-    {'title': 'Batman Forever (1995)', 'id': 'batman-forever'},
-    {'title': 'Seven (1995)', 'id': 'seven'},
-]
+#Read Odered Movie ID and Title file
+ordered_id_title_df = pd.read_csv('ordered_id_title_mappings.csv')
+movies = []
+for index, row in ordered_id_title_df.iterrows():
+    if pd.notna(row['Title']):
+        title = row['Title']
+        movie_id = row['MovieID']  # Using 'MovieID' as 'id'
+        movies.append({'title': title, 'id': movie_id})
 
 # Assuming this is our Item-Based Collaborative Filtering function that returns recommendations
 def myIBCF(ratings):
-    print(ratings)
-    return [{'title': f'Recommended Movie {i+1}', 'rank': i+1} for i in range(10)]
+    # First, create a mapping from Title to MovieID using ordered_df
+    title_to_id_map = ordered_id_title_df.set_index('Title')['MovieID'].to_dict()
+
+    # Mapping titles to MovieIDs in the provided dictionary
+    movie_ratings_mapped = {title_to_id_map.get(title, 'Unknown'): rating for title, rating in ratings.items()}
+
+    # Creating the Series
+    ratings_series = pd.Series(movie_ratings_mapped, index=ordered_id_title_df['MovieID'])
+
+    # Replace 0 with NaN
+    vector = ratings_series.replace(0, np.nan)
+
+    # Reading the S matrix
+    dataframeS = pd.read_csv('S3df.csv', index_col=0)
+
+    #The maximum column (movie) number
+    n_v = vector.shape[0]
+    vector_copy = vector.copy(deep=True)
+    vector_new = pd.Series(np.nan, index=vector.index)
+    
+    # Finding the row numbers where values are not NaN
+    non_nan_rows = np.where(~np.isnan(vector_copy))[0]
+    
+    #Calculating Movie scores
+    dataS = copy.deepcopy(dataframeS)
+    dataS.fillna(0, inplace=True)
+    for vl in range(n_v):
+        if np.isnan(vector_copy[vl]):
+            denominator = (dataS.loc[dataS.columns[vl], dataS.columns[non_nan_rows]]).sum()            
+            numerator = np.dot(dataS.loc[dataS.columns[vl], dataS.columns[non_nan_rows]], vector_copy[non_nan_rows])
+            prediction = numerator / denominator
+            vector_new[vl] = prediction
+    df_diff_sorted = vector_new.sort_values(ascending=False)
+    top_10_diff = df_diff_sorted.head(10)
+
+    # Extracting the row index (MovieID) from the Series
+    movie_ids = top_10_diff.index
+
+    # Maping the row index (MovieID) back to title using ordered_df
+    id_to_title_map = ordered_id_title_df.set_index('MovieID')['Title'].to_dict()
+
+    # Creating a dictionary with the title and rank
+    ranked_movies = [{'title': id_to_title_map.get(movie_id, 'Unknown'), 'rank': rank+1} for rank, movie_id in enumerate(movie_ids)]
+
+    return ranked_movies
 
 app = dash.Dash(__name__, external_stylesheets=[
     dbc.themes.BOOTSTRAP,
@@ -50,7 +86,7 @@ app = dash.Dash(__name__, external_stylesheets=[
 ], suppress_callback_exceptions=True)
 server = app.server
 
-# Define the layout of the app
+# Defining the layout of the app
 app.layout = html.Div([
     # Header
     dbc.NavbarSimple(
@@ -109,7 +145,7 @@ app.layout = html.Div([
 def render_page_content(pathname):
     # Content for the "Recommender by Rating" page
     if pathname == "/rating":
-        # Create the movie rating cards inside a scrollable div
+        # Creating the movie rating cards inside a scrollable div
         movie_rating_cards = html.Div(
             [
                 dbc.Card(
@@ -134,7 +170,7 @@ def render_page_content(pathname):
                                                 className="mb-4"
                                             ),
                                             width=4
-                                        ) for movie in sample_movies
+                                        ) for movie in movies
                                     ],
                                     className="mb-4"
                                 )
@@ -163,7 +199,7 @@ def render_page_content(pathname):
                 dbc.Col(html.Div(id='recommendations-output-rating'), width=12)
             ], className="mt-4")
 
-        # Combine all UI elements into the container
+        # Combining all UI elements into the container
         return dbc.Container([movie_rating_cards, recommendation_section, recommendations])
     else:
         # Content for the "Recommender by Genre" page
@@ -213,14 +249,14 @@ def display_recommendations(n_clicks, genre):
 @app.callback(
     Output('recommendations-output-rating', 'children'),
     [Input('get-recommendations-rating', 'n_clicks')],
-    [State(movie['id'], 'value') for movie in sample_movies]
+    [State(movie['id'], 'value') for movie in movies]
 )
 def display_recommendations_based_on_ratings(n_clicks, *ratings):
     if n_clicks:
-        movie_ratings = {movie['title']: rating for movie, rating in zip(sample_movies, ratings)}
+        movie_ratings = {movie['title']: rating for movie, rating in zip(movies, ratings)}
         recommendations = myIBCF(movie_ratings)
 
-        # Create a grid of movie cards that are responsive to the viewport
+        # Creating a grid of movie cards that are responsive to the viewport
         card_content = []
         for rec in recommendations:
             card = dbc.Card(
