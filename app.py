@@ -3,13 +3,23 @@ from dash import html, dcc, Input, Output, State
 import dash_bootstrap_components as dbc
 import pandas as pd
 
-# Placeholder data
-recommendations_table = pd.DataFrame({
-    'Action': ['Action Movie 1', 'Action Movie 2', 'Action Movie 3', 'Action Movie 4', 'Action Movie 5',
-               'Action Movie 6', 'Action Movie 7', 'Action Movie 8', 'Action Movie 9', 'Action Movie 10'],
-    'Comedy': ['Comedy Movie 1', 'Comedy Movie 2', 'Comedy Movie 3', 'Comedy Movie 4', 'Comedy Movie 5',
-               'Comedy Movie 6', 'Comedy Movie 7', 'Comedy Movie 8', 'Comedy Movie 9', 'Comedy Movie 10'],
-})
+# Read the System 1 output CSV file
+df = pd.read_csv('system_1_output.csv')
+
+# Create a dictionary to hold genres and their movies
+genre_dict = {}
+
+for index, row in df.iterrows():
+    genre = row['Genres']
+    movie = row['Title']
+    
+    if genre in genre_dict:
+        genre_dict[genre].append(movie)
+    else:
+        genre_dict[genre] = [movie]
+
+# Creating a DataFrame with genres as columns and their movies as values
+recommendations_table = pd.DataFrame(dict([(k, pd.Series(v)) for k, v in genre_dict.items()]))
 
 sample_movies = [
     {'title': 'Toy Story (1995)', 'id': 'toy-story'},
@@ -31,6 +41,7 @@ sample_movies = [
 
 # Assuming this is our Item-Based Collaborative Filtering function that returns recommendations
 def myIBCF(ratings):
+    print(ratings)
     return [{'title': f'Recommended Movie {i+1}', 'rank': i+1} for i in range(10)]
 
 app = dash.Dash(__name__, external_stylesheets=[

@@ -1,0 +1,181 @@
+MovieID,Genres,Title
+590,Western,Dances with Wolves (1990)
+1304,Western,Butch Cassidy and the Sundance Kid (1969)
+2012,Western,Back to the Future Part III (1990)
+3671,Western,Blazing Saddles (1974)
+1266,Western,Unforgiven (1992)
+2701,Western,Wild Wild West (1999)
+1201,Western,"Good, The Bad and The Ugly, The (1966)"
+368,Western,Maverick (1994)
+266,Western,Legends of the Fall (1994)
+2527,Western,Westworld (1973)
+1196,War,Star Wars: Episode V - The Empire Strikes Back (1980)
+1210,War,Star Wars: Episode VI - Return of the Jedi (1983)
+2028,War,Saving Private Ryan (1998)
+110,War,Braveheart (1995)
+527,War,Schindler's List (1993)
+356,War,Forrest Gump (1994)
+1200,War,Aliens (1986)
+780,War,Independence Day (ID4) (1996)
+912,War,Casablanca (1942)
+750,War,Dr. Strangelove or: How I Learned to Stop Worrying and Love the Bomb (1963)
+589,Thriller,Terminator 2: Judgment Day (1991)
+2571,Thriller,"Matrix, The (1999)"
+593,Thriller,"Silence of the Lambs, The (1991)"
+608,Thriller,Fargo (1996)
+2762,Thriller,"Sixth Sense, The (1999)"
+1617,Thriller,L.A. Confidential (1997)
+1240,Thriller,"Terminator, The (1984)"
+1214,Thriller,Alien (1979)
+2916,Thriller,Total Recall (1990)
+457,Thriller,"Fugitive, The (1993)"
+260,Sci-Fi,Star Wars: Episode IV - A New Hope (1977)
+1196,Sci-Fi,Star Wars: Episode V - The Empire Strikes Back (1980)
+1210,Sci-Fi,Star Wars: Episode VI - Return of the Jedi (1983)
+480,Sci-Fi,Jurassic Park (1993)
+589,Sci-Fi,Terminator 2: Judgment Day (1991)
+2571,Sci-Fi,"Matrix, The (1999)"
+1270,Sci-Fi,Back to the Future (1985)
+1580,Sci-Fi,Men in Black (1997)
+1097,Sci-Fi,E.T. the Extra-Terrestrial (1982)
+2628,Sci-Fi,Star Wars: Episode I - The Phantom Menace (1999)
+1210,Romance,Star Wars: Episode VI - Return of the Jedi (1983)
+2396,Romance,Shakespeare in Love (1998)
+1197,Romance,"Princess Bride, The (1987)"
+1265,Romance,Groundhog Day (1993)
+356,Romance,Forrest Gump (1994)
+912,Romance,Casablanca (1942)
+377,Romance,Speed (1994)
+1307,Romance,When Harry Met Sally... (1989)
+1721,Romance,Titanic (1997)
+2291,Romance,Edward Scissorhands (1990)
+1617,Mystery,L.A. Confidential (1997)
+924,Mystery,2001: A Space Odyssey (1968)
+648,Mystery,Mission: Impossible (1996)
+3176,Mystery,"Talented Mr. Ripley, The (1999)"
+1252,Mystery,Chinatown (1974)
+1732,Mystery,"Big Lebowski, The (1998)"
+904,Mystery,Rear Window (1954)
+913,Mystery,"Maltese Falcon, The (1941)"
+1909,Mystery,"X-Files: Fight the Future, The (1998)"
+903,Mystery,Vertigo (1958)
+919,Musical,"Wizard of Oz, The (1939)"
+588,Musical,Aladdin (1992)
+1220,Musical,"Blues Brothers, The (1980)"
+2657,Musical,"Rocky Horror Picture Show, The (1975)"
+364,Musical,"Lion King, The (1994)"
+1288,Musical,This Is Spinal Tap (1984)
+595,Musical,Beauty and the Beast (1991)
+2081,Musical,"Little Mermaid, The (1989)"
+1028,Musical,Mary Poppins (1964)
+551,Musical,"Nightmare Before Christmas, The (1993)"
+2716,Horror,Ghostbusters (1984)
+1214,Horror,Alien (1979)
+1387,Horror,Jaws (1975)
+1219,Horror,Psycho (1960)
+2710,Horror,"Blair Witch Project, The (1999)"
+2657,Horror,"Rocky Horror Picture Show, The (1975)"
+1278,Horror,Young Frankenstein (1974)
+1258,Horror,"Shining, The (1980)"
+2455,Horror,"Fly, The (1986)"
+3081,Horror,Sleepy Hollow (1999)
+1617,Film-Noir,L.A. Confidential (1997)
+541,Film-Noir,Blade Runner (1982)
+2987,Film-Noir,Who Framed Roger Rabbit? (1988)
+1252,Film-Noir,Chinatown (1974)
+913,Film-Noir,"Maltese Falcon, The (1941)"
+1179,Film-Noir,"Grifters, The (1990)"
+1748,Film-Noir,Dark City (1998)
+1267,Film-Noir,"Manchurian Candidate, The (1962)"
+3683,Film-Noir,Blood Simple (1984)
+3435,Film-Noir,Double Indemnity (1944)
+260,Fantasy,Star Wars: Episode IV - A New Hope (1977)
+1097,Fantasy,E.T. the Extra-Terrestrial (1982)
+2628,Fantasy,Star Wars: Episode I - The Phantom Menace (1999)
+2174,Fantasy,Beetlejuice (1988)
+2797,Fantasy,Big (1988)
+1073,Fantasy,Willy Wonka and the Chocolate Factory (1971)
+367,Fantasy,"Mask, The (1994)"
+2100,Fantasy,Splash (1984)
+2054,Fantasy,"Honey, I Shrunk the Kids (1989)"
+2968,Fantasy,Time Bandits (1981)
+2858,Drama,American Beauty (1999)
+1196,Drama,Star Wars: Episode V - The Empire Strikes Back (1980)
+2028,Drama,Saving Private Ryan (1998)
+593,Drama,"Silence of the Lambs, The (1991)"
+608,Drama,Fargo (1996)
+110,Drama,Braveheart (1995)
+527,Drama,Schindler's List (1993)
+1097,Drama,E.T. the Extra-Terrestrial (1982)
+318,Drama,"Shawshank Redemption, The (1994)"
+858,Drama,"Godfather, The (1972)"
+2064,Documentary,Roger & Me (1989)
+246,Documentary,Hoop Dreams (1994)
+162,Documentary,Crumb (1994)
+3007,Documentary,American Movie (1999)
+1147,Documentary,When We Were Kings (1996)
+1189,Documentary,"Thin Blue Line, The (1988)"
+2859,Documentary,Stop Making Sense (1984)
+2677,Documentary,Buena Vista Social Club (1999)
+2693,Documentary,Trekkies (1997)
+1191,Documentary,Madonna: Truth or Dare (1991)
+608,Crime,Fargo (1996)
+1617,Crime,L.A. Confidential (1997)
+858,Crime,"Godfather, The (1972)"
+296,Crime,Pulp Fiction (1994)
+50,Crime,"Usual Suspects, The (1995)"
+1221,Crime,"Godfather: Part II, The (1974)"
+1213,Crime,GoodFellas (1990)
+2000,Crime,Lethal Weapon (1987)
+592,Crime,Batman (1989)
+1089,Crime,Reservoir Dogs (1992)
+2858,Comedy,American Beauty (1999)
+1270,Comedy,Back to the Future (1985)
+1580,Comedy,Men in Black (1997)
+2396,Comedy,Shakespeare in Love (1998)
+1197,Comedy,"Princess Bride, The (1987)"
+1265,Comedy,Groundhog Day (1993)
+2997,Comedy,Being John Malkovich (1999)
+356,Comedy,Forrest Gump (1994)
+2716,Comedy,Ghostbusters (1984)
+1,Comedy,Toy Story (1995)
+1097,Children's,E.T. the Extra-Terrestrial (1982)
+1,Children's,Toy Story (1995)
+34,Children's,Babe (1995)
+919,Children's,"Wizard of Oz, The (1939)"
+2355,Children's,"Bug's Life, A (1998)"
+3114,Children's,Toy Story 2 (1999)
+588,Children's,Aladdin (1992)
+3751,Children's,Chicken Run (2000)
+1073,Children's,Willy Wonka and the Chocolate Factory (1971)
+364,Children's,"Lion King, The (1994)"
+1,Animation,Toy Story (1995)
+2987,Animation,Who Framed Roger Rabbit? (1988)
+2355,Animation,"Bug's Life, A (1998)"
+3114,Animation,Toy Story 2 (1999)
+588,Animation,Aladdin (1992)
+3751,Animation,Chicken Run (2000)
+2700,Animation,"South Park: Bigger, Longer and Uncut (1999)"
+364,Animation,"Lion King, The (1994)"
+595,Animation,Beauty and the Beast (1991)
+2081,Animation,"Little Mermaid, The (1989)"
+260,Adventure,Star Wars: Episode IV - A New Hope (1977)
+1196,Adventure,Star Wars: Episode V - The Empire Strikes Back (1980)
+1210,Adventure,Star Wars: Episode VI - Return of the Jedi (1983)
+480,Adventure,Jurassic Park (1993)
+1580,Adventure,Men in Black (1997)
+1198,Adventure,Raiders of the Lost Ark (1981)
+1197,Adventure,"Princess Bride, The (1987)"
+2628,Adventure,Star Wars: Episode I - The Phantom Menace (1999)
+2916,Adventure,Total Recall (1990)
+2987,Adventure,Who Framed Roger Rabbit? (1988)
+260,Action,Star Wars: Episode IV - A New Hope (1977)
+1196,Action,Star Wars: Episode V - The Empire Strikes Back (1980)
+1210,Action,Star Wars: Episode VI - Return of the Jedi (1983)
+480,Action,Jurassic Park (1993)
+2028,Action,Saving Private Ryan (1998)
+589,Action,Terminator 2: Judgment Day (1991)
+2571,Action,"Matrix, The (1999)"
+1580,Action,Men in Black (1997)
+1198,Action,Raiders of the Lost Ark (1981)
+110,Action,Braveheart (1995)
